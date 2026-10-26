@@ -1,0 +1,6 @@
+Client feedback on this design (design.png in this folder).
+
+Brief: Same food app. 3 rounds agreed, this is round 2.
+
+Client message:
+> Can the Add to order button be bigger and red? Red makes people hungry. Also more white space but show more restaurants on the home screen.

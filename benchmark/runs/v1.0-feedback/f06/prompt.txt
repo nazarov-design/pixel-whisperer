@@ -1,0 +1,6 @@
+Client feedback on this design (design.png in this folder).
+
+Brief: Real-estate listings page redesign. Goal: more inquiries, trustworthy feel. 3 rounds agreed, this is round 1.
+
+Client message:
+> Our sales team says it looks like a spam site. But they also want the HOT and -10% badges bigger because they convert. Can you make it cleaner?

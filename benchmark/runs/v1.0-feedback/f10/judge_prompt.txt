@@ -1,0 +1,116 @@
+You are a senior product designer scoring two AI responses blind. Look at design.png in this folder first. Use the 'Feedback Decoder' rubric below. Score each response 1-5 per criterion. Judge substance, not length. Reply with JSON only: {"A": {criterion: score}, "B": {...}, "note": "one sentence"}.
+
+RUBRIC:
+# Scoring rubric
+
+For human designers (and the optional blind AI judge). Score each response 1–5 per criterion without knowing which one used the skill. Hide the file names, or have someone else shuffle them into A/B.
+
+**Scale:** 1 = missing or wrong · 2 = weak · 3 = acceptable · 4 = good, a designer would use it with small edits · 5 = excellent, ready to use.
+
+## Feedback Decoder
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **specificity** | Changes are concrete and measurable (element + from → to values), not "make it bolder". |
+| **grounding** | Changes refer to elements actually visible in the design; no invented elements or values. |
+| **interpretation** | Plausible readings of vague phrases, ranked, honest about uncertainty; asks when it should. |
+| **conflicts_scope** | Spots contradictions between requests, with the brief or accessibility; flags out-of-scope requests and round limits. |
+| **client_reply** | Reply is in the client's language, warm and professional, could be sent with minimal edits; handles scope politely. |
+| **usability** | Scannable, right length, the designer knows what to do in under a minute. |
+
+## Desk Crit
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **prioritization** | Focuses on the 1–3 issues that matter most for this work; no laundry list. |
+| **accuracy** | Observations are correct and point to specific places in the work. |
+| **teaching** | Names the principle behind each issue and why it matters, calibrated to the stated level. |
+| **exercise** | One concrete, time-boxed exercise targeting the main weakness, with a clear "done" check. |
+| **tone** | Kind and honest: specific praise, no grade inflation, no harshness; in the student's language. |
+| **actionability** | The student knows exactly what to do next. |
+
+## How to run a human scoring session
+
+1. `python3 benchmark/run_benchmark.py run --suite feedback --all` (and `--suite crit`).
+2. `python3 benchmark/run_benchmark.py report --out <run dir>` and strip the "with/without" headers, or copy outputs into a form as A/B in random order.
+3. Ask 3+ designers to score independently. Average per criterion; report the spread, not just the mean.
+
+
+TASK GIVEN TO BOTH:
+Client feedback on this design (design.png in this folder).
+
+Brief: Same food app. 3 rounds agreed, this is round 2.
+
+Client message:
+> Can the Add to order button be bigger and red? Red makes people hungry. Also more white space but show more restaurants on the home screen.
+
+
+RESPONSE A:
+I've made the round 2 revision. The 4-restaurant home screen and the red button are done and I've checked the render. I haven't checked how the red button looks next to the green promo banner on a real device.
+
+**Changes**
+- **Add to order:** the button is now 64px tall (it was about 52px) and red (`#D92D20`). The text is 18px bold, and white on this red passes AA contrast. Price stays on the right.
+- **Home screen:** it now shows 4 restaurants instead of 2. Napoli Corner and Green Bowl are joined by Sakura Roll and Burger Yard, which I made up as placeholders.
+- **White space:** the margins between sections are slightly larger, and each restaurant row has 18px of space around it.
+
+**How I fit more restaurants and more white space**
+The two requests pull against each other, so I made room by shrinking the green promo banner from 120px to 52px (it was mostly empty). The restaurant thumbnails went from 70px to 56px. The extra spacing is in the gaps between sections and rows, so the screen reads as airier even though it holds more content.
+
+**Things to raise with the client**
+- The red button now sits next to a green promo banner and green was the original brand colour. If red is the new accent, the banner may need to change too. I left it alone because the client didn't ask for that. This is a round 2 of 3 decision for you.
+- A fifth restaurant doesn't fit without crowding the bottom nav. More than 4 means less white space.
+
+Files are in the `without` folder:
+- `design-r2.png`
+- `design-r2.html`
+
+The original `design.png` is untouched.
+
+
+RESPONSE B:
+**TL;DR** — round 2 of 3
+1. Add to order: green → red, about 52 → 60px tall, keep it full width · 2. Home: shrink the banner and tiles, add 2–3 restaurants (not by cramming) · 3. Whitespace: fix it with consistent spacing, not more empty gaps
+Reply: "Red button and a bigger tap area are in. For the home screen we'll slim the banner so more restaurants fit while the spacing stays airy. Here's the new version."
+
+## Decode — food-app
+
+| # | Client said | Likely meaning (confidence) | Change |
+|---|---|---|---|
+| 1 | "Add to order button be bigger" | a) more prominent as the main action (65%) | Height ~52 → 60px, label ~16 → 18px, keep full width (~300px). Marker 1 |
+| | | b) easier to tap (25%) | Same change; 60px is above the 44–48px tap minimum |
+| | | c) wants the price/label larger (10%) | Label and price 18px |
+| 2 | "and red" | a) red as the appetite/brand colour for the key action (80%) | CTA ~#22C55E → ~#DC2626. White text goes from ~2.3:1 to ~4.8:1, so it's also more readable. |
+| | | b) red everywhere (20%) | Not recommended. Ask Q1. |
+| 3 | "more white space" | a) more breathing room between groups (55%) | Consistent 24px between sections, 16px inside lists. Marker 3 |
+| | | b) less visual weight in the promo area (35%) | Banner ~120 → ~76px tall, with the empty lower half removed. Marker 2 |
+| | | c) literally more empty area (10%) | Conflicts with item 4 |
+| 4 | "show more restaurants on the home screen" | a) more rows visible without scrolling (75%) | There are 2 now and ~90px of empty space above the nav. Banner −44px, tile row ~52 → 44px, rows ~90 → 80px: 4 rows fit. Markers 2, 3, 4 |
+| | | b) a horizontal carousel or second section (25%) | Optional variant, not the default |
+
+**Facts used:** CTA ~52×300px, green ~#22C55E, white text ~2.3:1 · promo banner ~120px, green, lower half empty · 2 restaurant rows of ~80px, with ~90px unused above the nav · category tiles ~52px, "Desserts" clipped at the right edge · palette is warm orange/peach, plus green in two places
+
+### Keep as is
+- A: Margherita title and description hierarchy, which is clear
+- B: Warm food image and peach palette, which carries the appetite feel
+- C: Bottom nav, and the fixed CTA with the price inside it. Both stay as they are.
+
+### Conflicts
+- **#3 vs #4** ("more white space" and "more restaurants"): these pull against each other on a fixed screen. Resolve it by saving the space in the banner and tiles. Keep the gaps between groups generous and make the rows more compact. It will read as "cleaner and fuller", not "emptier". Offer a variant with 3 rows and wider spacing if they want more air.
+- **Red CTA vs green banner:** the two are equally loud and compete for attention, and red next to green can look like a holiday theme. After the CTA turns red, the banner should become the warm peach/orange family. Keep the green only if the client confirms it's a brand colour (Q1). This is an extra change they didn't ask for, so flag it.
+- **Red semantics:** red usually means error or delete. It works for food, but it must not also be used for validation messages. Mention it only if they plan error states.
+
+### Ask the client (max 3)
+1. Is the green a brand colour, or can the promo banner move to a warm tone to match the red button? (A: keep green · B: recolour)
+2. For the home screen, do you prefer A (4 compact rows) or B (3 rows, more space)? I can show both.
+
+### Reply (client's language)
+**Friendly:** Thanks! The Add to order button is now bigger and red, and it's easier to read as well. On the home screen we've slimmed the banner and tiles so more restaurants fit without feeling crowded. One question: is the green a brand colour, or can the banner move to a warm tone so it doesn't clash with the red?
+
+**Firm:** The button is red and bigger. More restaurants on the home screen plus more white space compete for the same space, so I've prioritised the restaurant list and kept spacing consistent. If you want more air, I can show a 3-row variant in round 3. Please confirm whether the green banner can change.
+
+### Scope
+Round 2 of 3 · 4 items, all in scope (same screens, no new features). Recolouring the banner is a knock-on change, so tell the client about it. One round remains. I'd bundle the A/B variants into it so there are no surprises.
+
+Overlay: `./benchmark/runs/v1.0-feedback/f10/with/.feedback-decoder/work/overlay.png`
+Ledger: `./.feedback-decoder/food-app.md` (created with 3 agreed rounds, round 2 in progress)
+

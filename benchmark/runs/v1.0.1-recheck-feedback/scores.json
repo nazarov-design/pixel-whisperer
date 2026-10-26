@@ -1,0 +1,40 @@
+{
+  "f04": {
+    "without": {
+      "specificity": 3,
+      "grounding": 4,
+      "interpretation": 2,
+      "conflicts_scope": 3,
+      "client_reply": 1,
+      "usability": 3
+    },
+    "with": {
+      "specificity": 5,
+      "grounding": 5,
+      "interpretation": 5,
+      "conflicts_scope": 5,
+      "client_reply": 5,
+      "usability": 4
+    },
+    "note": "A skips decoding and goes straight to an unrequested redesign that has no client reply or questions, while B accurately decodes each vague phrase into ranked, measurable changes based on the visible design, flags real conflicts and scope, and gives a ready-to-send reply."
+  },
+  "f06": {
+    "with": {
+      "specificity": 5,
+      "grounding": 4,
+      "interpretation": 5,
+      "conflicts_scope": 5,
+      "client_reply": 4,
+      "usability": 4
+    },
+    "without": {
+      "specificity": 3,
+      "grounding": 4,
+      "interpretation": 3,
+      "conflicts_scope": 3,
+      "client_reply": 4,
+      "usability": 4
+    },
+    "note": "A gives exact from→to values (badge text 11→14px, price red→navy), ranks its readings of the vague phrases with confidence levels, and tracks rounds and scope, though it has small grounding slips (the badge-misalignment claim and references to overlay markers the client can't see). B diagnoses the problem well, but it's vaguer, says 'Call us' is in the middle of the nav when it's at the end, and adds trust signals and filter regrouping without flagging them as extra scope."
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "f04": {
+    "without": {
+      "specificity": 3,
+      "grounding": 4,
+      "interpretation": 2,
+      "conflicts_scope": 2,
+      "client_reply": 1,
+      "usability": 4
+    },
+    "with": {
+      "specificity": 5,
+      "grounding": 4,
+      "interpretation": 5,
+      "conflicts_scope": 5,
+      "client_reply": 5,
+      "usability": 4
+    },
+    "note": "A skipped the decoding and built a sensible redesign with no ranked readings, no 'calmer vs. add teachers' conflict and no client reply; B decodes each phrase with confidence levels, measurable changes, contrast checks and ready-to-send replies, though it gives the H1 as both ~46px and ~56px and places Teachers out of nav order."
+  },
+  "f06": {
+    "without": {
+      "specificity": 3,
+      "grounding": 3,
+      "interpretation": 2,
+      "conflicts_scope": 3,
+      "client_reply": 4,
+      "usability": 4
+    },
+    "with": {
+      "specificity": 5,
+      "grounding": 4,
+      "interpretation": 5,
+      "conflicts_scope": 5,
+      "client_reply": 4,
+      "usability": 3
+    },
+    "note": "B gives ranked readings with confidence levels, measurable before→after values and a well-argued conflict analysis, but it is long and contradicts itself on where red stays; A is concise and its reply is ready to send, but it gives no ranked interpretations and wrongly says the first listing showed no area, when the design shows 74 m²."
+  },
+  "f10": {
+    "without": {
+      "specificity": 4,
+      "grounding": 4,
+      "interpretation": 2,
+      "conflicts_scope": 3,
+      "client_reply": 1,
+      "usability": 4
+    },
+    "with": {
+      "specificity": 5,
+      "grounding": 5,
+      "interpretation": 5,
+      "conflicts_scope": 5,
+      "client_reply": 5,
+      "usability": 4
+    },
+    "note": "B is better on almost every criterion: it gives ranked readings of each request with confidence levels, measurements that match the design, both conflicts (white space vs. more restaurants, red vs. the green banner), questions for the client and a reply ready to send. A reports concrete changes and catches the same conflicts, but it gives no readings of the vague phrases, no client reply, and invents placeholder restaurants."
+  },
+  "f11": {
+    "without": {
+      "specificity": 3,
+      "grounding": 4,
+      "interpretation": 2,
+      "conflicts_scope": 3,
+      "client_reply": 1,
+      "usability": 4
+    },
+    "with": {
+      "specificity": 5,
+      "grounding": 5,
+      "interpretation": 5,
+      "conflicts_scope": 5,
+      "client_reply": 5,
+      "usability": 4
+    },
+    "note": "B is the stronger response: it gives ranked readings of each vague phrase, concrete from→to values that match the design (including the real contrast problem of white text on #22C55E), raises the points program as a scope change with questions to ask, and offers client replies ready to send; A acts on a single reading, makes up the points mechanics, misses the accessibility issue, and gives no reply for the client."
+  },
+  "f17": {
+    "without": {
+      "specificity": 3,
+      "grounding": 3,
+      "interpretation": 2,
+      "conflicts_scope": 4,
+      "client_reply": 3,
+      "usability": 4
+    },
+    "with": {
+      "specificity": 5,
+      "grounding": 4,
+      "interpretation": 5,
+      "conflicts_scope": 5,
+      "client_reply": 5,
+      "usability": 4
+    },
+    "note": "B ranks the plausible readings of 'grey filter text' (search placeholders, sidebar filters, card meta), backs them with sampled contrast values, asks the client which one they mean, and gives a ready-to-send reply; A guesses card meta, overlooks the grey search placeholders as the likely target, mixes sidebar and meta fixes, and its reply reports changes as already made."
+  }
+}

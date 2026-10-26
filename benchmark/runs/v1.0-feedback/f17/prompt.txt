@@ -1,0 +1,6 @@
+Client feedback on this design (design.png in this folder).
+
+Brief: Listings page redesign. 3 rounds agreed, this is round 1. Brief says: accessible (WCAG AA).
+
+Client message:
+> Make the grey filter text lighter and smaller, it's too heavy. And the prices in red look aggressive.

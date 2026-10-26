@@ -1,0 +1,116 @@
+You are a senior product designer scoring two AI responses blind. Look at design.png in this folder first. Use the 'Feedback Decoder' rubric below. Score each response 1-5 per criterion. Judge substance, not length. Reply with JSON only: {"A": {criterion: score}, "B": {...}, "note": "one sentence"}.
+
+RUBRIC:
+# Scoring rubric
+
+For human designers (and the optional blind AI judge). Score each response 1–5 per criterion without knowing which one used the skill. Hide the file names, or have someone else shuffle them into A/B.
+
+**Scale:** 1 = missing or wrong · 2 = weak · 3 = acceptable · 4 = good, a designer would use it with small edits · 5 = excellent, ready to use.
+
+## Feedback Decoder
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **specificity** | Changes are concrete and measurable (element + from → to values), not "make it bolder". |
+| **grounding** | Changes refer to elements actually visible in the design; no invented elements or values. |
+| **interpretation** | Plausible readings of vague phrases, ranked, honest about uncertainty; asks when it should. |
+| **conflicts_scope** | Spots contradictions between requests, with the brief or accessibility; flags out-of-scope requests and round limits. |
+| **client_reply** | Reply is in the client's language, warm and professional, could be sent with minimal edits; handles scope politely. |
+| **usability** | Scannable, right length, the designer knows what to do in under a minute. |
+
+## Desk Crit
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **prioritization** | Focuses on the 1–3 issues that matter most for this work; no laundry list. |
+| **accuracy** | Observations are correct and point to specific places in the work. |
+| **teaching** | Names the principle behind each issue and why it matters, calibrated to the stated level. |
+| **exercise** | One concrete, time-boxed exercise targeting the main weakness, with a clear "done" check. |
+| **tone** | Kind and honest: specific praise, no grade inflation, no harshness; in the student's language. |
+| **actionability** | The student knows exactly what to do next. |
+
+## How to run a human scoring session
+
+1. `python3 benchmark/run_benchmark.py run --suite feedback --all` (and `--suite crit`).
+2. `python3 benchmark/run_benchmark.py report --out <run dir>` and strip the "with/without" headers, or copy outputs into a form as A/B in random order.
+3. Ask 3+ designers to score independently. Average per criterion; report the spread, not just the mean.
+
+
+TASK GIVEN TO BOTH:
+Client feedback on this design (design.png in this folder).
+
+Brief: Real-estate listings page redesign. Goal: more inquiries, trustworthy feel. 3 rounds agreed, this is round 1.
+
+Client message:
+> Our sales team says it looks like a spam site. But they also want the HOT and -10% badges bigger because they convert. Can you make it cleaner?
+
+
+RESPONSE A:
+I've built the round 1 revision as `design-v2.html` in this folder. I haven't opened it in a browser or rendered it, so check the layout before sending it on.
+
+**The conflict:** "Cleaner" and "bigger HOT / -10% badges" pull against each other. Badges, a red price and three differently coloured buttons on every card are probably what makes it feel like a spam site. I kept the badges and made them bigger, then removed everything else that competed with them.
+
+**What changed**
+- **Badges:** Each card has one badge only, so the old HOT + NEW pair is gone. They are about 40% larger, with more padding and 14px bold text. Red is now reserved for HOT and -10% so they stand out. EXCLUSIVE is a quiet white tag.
+- **-10% badge:** The old price now appears struck through next to the new price, so the discount is believable.
+- **Buttons:** The navy, teal and yellow row is now one primary "Request a viewing" button, a "Details" outline button and a heart icon for Save. This puts the inquiry first, which is the goal.
+- **Price:** It is now navy instead of red.
+- **Nav:** It is cut from 8 items to 6. Blog and Mortgage calculator are dropped, and the header is white with a thin line instead of a dark block.
+- **Search and filters:** The search button is navy, not red, and the filters are labelled in small caps. The page has a "Properties for sale / 4 results" heading.
+- **Cards:** The emoji icons are replaced with a plain text spec line, and each card has a border and more space.
+
+**Draft reply to the client**
+> Thanks, this is a fair read. The "spam" feeling comes mostly from too many competing colours and badges. In round 1 we've kept HOT and -10% and made them larger, but limited each listing to one badge and reserved red for those two only, so they stand out more than before. We also simplified the buttons to one clear action, "Request a viewing". Round 2 can add trust elements, such as agent photos and names, licence info, and reviews. Do you have any of these to share?
+
+**Open items for you**
+- **Trust elements:** There is no agent info, reviews or verified marks yet. That is the biggest trust lever, so I held it for round 2 rather than inventing content.
+- **Prices and discount:** The struck-through €458,300 is a placeholder I calculated from -10%. Confirm the real original price.
+- **Spec details:** The parking details and 74 m² for the first listing are my assumption. The original showed a parking count but no area for that card.
+- **Badge limit:** Is one badge per card acceptable to the sales team? If a listing is both HOT and discounted, they may push back.
+
+
+RESPONSE B:
+**TL;DR** — round 1 of 3
+1. Cut the palette to navy + one accent (red stays only for the primary action and the badges) · 2. One primary button per card, the other two become quiet · 3. Make HOT and -10% bigger, but keep only 2 badge types so they stand out
+Reply: "Thanks! We'll cut the colors and clutter so the page feels calmer, and make HOT and -10% bigger. Because there will be fewer badges, each one will stand out more."
+
+## Decode: real-estate-listings
+
+| # | Client said | Likely meaning (confidence) | Change |
+|---|---|---|---|
+| 1 | "looks like a spam site" / "cleaner" | a) Too many competing colors and loud accents (55%) | Page uses navy, red, teal, mustard and the badge yellow. Cut to navy + red. Teal and mustard buttons go. Price red → navy `~#0B2545`. |
+| | | b) Repeated, equal-weight elements per card (30%) | 3 buttons in 3 colors → DETAILS filled, CALL and SAVE as outline/text. Badges are limited to HOT and -10% (see #3). |
+| | | c) Template feel: gray placeholders, emoji icons, no proof (15%) | Emoji (🛏🛁🚗) → line icons. Real photos. Add an agent or licence line. Check this with a question (Q1). |
+| 2 | "looks like spam" (trust) | a) Red price + red HOT + red SEARCH read as an alarm or ad (50%) | Red only for SEARCH/primary and the discount badge. Prices go navy and larger (~20 → 22px, bold). |
+| | | b) Crowded nav and no credibility signals (35%) | Nav has 8 items on one line, ~12px gaps. Cut to 5 (Buy, Rent, Sell, Agents, Contact) and move Call us into a phone button. Gap ~12 → 24px. |
+| | | c) Missing proof (15%) | Add a licence line or a deals-closed number in the header. Needs client content (Q2). |
+| 3 | "HOT and -10% bigger, they convert" | a) Bigger badge itself (70%) | HOT and -10% from ~36×16px / ~9px text to ~56×26px / 13px, 4px radius. |
+| | | b) Wants them noticed more (30%) | Same fix. Remove NEW and EXCLUSIVE, or make them plain text labels, so only 2 loud badges remain. |
+
+**Facts used:** header navy · 4 accent colors (red, teal, mustard, yellow) · red used for price, SEARCH and HOT · 3 button colors per card · badges ~36×16px with ~9px text, 4 types · nav 8 items ~13px · emoji icons · gray placeholder images · empty white space below the filters (~300px). All of these are estimates read off the screenshot.
+
+### Keep as is
+- A: Navy header and logo: it's the most trustworthy element. Don't touch it while doing #1.
+- B: Search bar layout: clear and conventional. Keep its structure; just keep it the only red primary button.
+- Card structure (image, price, title, meta): it's good. #1 and #2 only change color and weight.
+
+### Conflicts
+- **"Cleaner" vs "bigger badges":** bigger badges add noise if all 4 types grow. Resolution: enlarge only HOT and -10%, and drop or mute NEW and EXCLUSIVE. Showing them is the client's call, so offer it as a before/after.
+- **"HOT" itself vs trust:** all-caps "HOT!" with an exclamation mark is a classic spam signal. Try "HOT" without the "!", or "Hot deal". It's a copy change, so check with the client.
+- **Badges vs the brief:** inquiries and trust are both goals, so show the bigger badges in a calm palette (see #1) rather than adding more red.
+
+### Ask the client (max 3)
+1. Do you have real photos for the listings, or should we keep placeholders for now? (affects #1c)
+2. Which proof can we show: licence number, years in business, or deals closed? (#2c)
+3. May we drop the "!" from "HOT!" and remove NEW and EXCLUSIVE? Or do you want to keep all 4 badge types? (#3)
+
+### Reply (client's language: English)
+**Friendly:** Thanks for the clear feedback! To make the page feel more trustworthy we'll reduce the number of colors, give each listing one clear main button, and tidy the menu. We'll also make the HOT and -10% badges larger. With fewer badge types competing for attention, they'll stand out more. Could you send photos and any proof points (licence, years in business) so we can show them?
+
+**Firm:** We'll take the "spam" feeling as the priority for this round: fewer colors, one main action per card, a calmer menu. HOT and -10% will be larger, and to keep them effective we'd like to limit badges to those two types. Please let us know if you'd rather keep all four.
+
+### Scope
+Round 1 of 3 · 2 items, both in scope (no new requests). Ledger created: `./.feedback-decoder/real-estate-listings.md`
+
+Overlay: `./benchmark/runs/v1.0-feedback/f06/with/.feedback-decoder/work/overlay.png`. Markers 1–5 are the changes and A–B are keep-as-is. Marker 5 (NEW badge) sits close to marker 2 on the right card, so check both when you edit.
+

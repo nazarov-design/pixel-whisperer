@@ -1,0 +1,6 @@
+Client feedback on this design (design.png in this folder).
+
+Brief: App de delivery: pantallas inicio y plato. Tono fresco y cercano. 3 rondas acordadas, esta es la ronda 1.
+
+Client message:
+> Está bien pero le falta vida. Que destaque más la comida y que sea más moderno. Ah, y ¿podemos añadir un programa de puntos?

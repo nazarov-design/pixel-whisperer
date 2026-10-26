@@ -1,0 +1,130 @@
+You are a senior product designer scoring two AI responses blind. Look at design.png in this folder first. Use the 'Desk Crit' rubric below. Score each response 1-5 per criterion. Judge substance, not length. Reply with JSON only: {"A": {criterion: score}, "B": {...}, "note": "one sentence"}.
+
+RUBRIC:
+# Scoring rubric
+
+For human designers (and the optional blind AI judge). Score each response 1–5 per criterion without knowing which one used the skill. Hide the file names, or have someone else shuffle them into A/B.
+
+**Scale:** 1 = missing or wrong · 2 = weak · 3 = acceptable · 4 = good, a designer would use it with small edits · 5 = excellent, ready to use.
+
+## Feedback Decoder
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **specificity** | Changes are concrete and measurable (element + from → to values), not "make it bolder". |
+| **grounding** | Changes refer to elements actually visible in the design; no invented elements or values. |
+| **interpretation** | Plausible readings of vague phrases, ranked, honest about uncertainty; asks when it should. |
+| **conflicts_scope** | Spots contradictions between requests, with the brief or accessibility; flags out-of-scope requests and round limits. |
+| **client_reply** | Reply is in the client's language, warm and professional, could be sent with minimal edits; handles scope politely. |
+| **usability** | Scannable, right length, the designer knows what to do in under a minute. |
+
+## Desk Crit
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **prioritization** | Focuses on the 1–3 issues that matter most for this work; no laundry list. |
+| **accuracy** | Observations are correct and point to specific places in the work. |
+| **teaching** | Names the principle behind each issue and why it matters, calibrated to the stated level. |
+| **exercise** | One concrete, time-boxed exercise targeting the main weakness, with a clear "done" check. |
+| **tone** | Kind and honest: specific praise, no grade inflation, no harshness; in the student's language. |
+| **actionability** | The student knows exactly what to do next. |
+
+## How to run a human scoring session
+
+1. `python3 benchmark/run_benchmark.py run --suite feedback --all` (and `--suite crit`).
+2. `python3 benchmark/run_benchmark.py report --out <run dir>` and strip the "with/without" headers, or copy outputs into a form as A/B in random order.
+3. Ask 3+ designers to score independently. Average per criterion; report the spread, not just the mean.
+
+
+TASK GIVEN TO BOTH:
+This is my UI course homework: a recipe detail screen. Please review it, I'm a beginner.
+
+(The work is design.png in this folder.)
+
+
+RESPONSE A:
+**TL;DR** — Main issue: the small grey info row (time, difficulty, servings, rating) is too faint to read. Exercise: Contrast checker sweep, 20 min. Test every text colour on your screen against its background and fix anything below the minimum ratio.
+
+## Desk crit: Recipe detail screen · beginner
+
+I judged your level from the work, since you didn't say. Tell me if that's wrong.
+
+### What works
+- **The title** (marker A): it's bold, dark and large, so it's clearly the first text you read. The dark blue-green on white is easy on the eyes.
+- **The warm palette** (marker B): the yellow, orange and tomato red feel like the dish. The teal bars and the red button give you a cool/warm contrast without extra colours.
+- **The basic structure**: the image is on top, then the title, ingredients and steps. That order is the one a cook needs. The numbered steps and bulleted ingredients are the right list types.
+
+### Fix first
+**1. The info row is nearly invisible** (marker 1) · *Principle: contrast*
+- **What I see:** "30 min · Medium · 2 servings · 4.8" is tiny, light grey on white, and the icons are even paler.
+- **Why it matters:** on a recipe screen, cooking time and difficulty are what someone checks first, so the least readable text on the page is the most useful. Light grey on white probably falls below the 4.5:1 minimum for small text.
+- **Try this:** darken the grey to about #555 or darker and raise the size by 2–3 px. Keep the row quieter than the title, but make it readable.
+
+**2. The teal bars are louder than the content** (marker 2) · *Principle: hierarchy*
+- **What I see:** "INGREDIENTS" and "STEPS" are white text on full-width saturated bars. They're the heaviest shapes after the image, and they pull your eye away from the title.
+- **Why it matters:** section labels should help you find your place, not compete with the title or the content.
+- **Try this:** swap the bar for a coloured label with no fill, and keep a thin line or extra space above it. The title is also centred while everything below is left-aligned, so try left-aligning it too.
+
+**3. The top icons don't match** (marker 3) · *Principle: contrast*
+- **What I see:** the back arrow is small and white on yellow, so it's hard to see. The heart is black and bigger. They look like they belong to different sets.
+- **Why it matters:** white on that yellow is low contrast, and these are the main controls on the screen.
+- **Try this:** use one colour and one stroke weight for both, in dark ink or inside a small white circle. Make the tap area about 44 px.
+
+Later: the "+" button doesn't say what it does (add to a list? start cooking?). The steps are also packed tighter than the ingredients, so give them more line spacing.
+
+### Exercise (20 min): Contrast checker sweep
+**Task:** use any free contrast checker (search "WebAIM contrast checker"). Write down the colour pair and ratio for every text and icon on this screen. Then fix the ones that fail.
+**Done when:** all body text is at least 4.5:1, large text and icons are at least 3:1, and you have a before/after list of the ratios.
+
+### Study
+Look at recipe apps and food-blog article pages. Notice how they show time and servings (usually dark, medium-sized text with clear icons) and how little decoration they put around section headings.
+
+Progress: first session, so I started a journal. Contrast is flagged as a recurring-issue watch. Overlay: `.desk-crit/work/overlay.png`. I left the journal in `.desk-crit/student.md`. This folder isn't a git repo, so nothing needed ignoring.
+
+
+RESPONSE B:
+# Review: Shakshuka recipe screen
+
+You've built a clean, readable screen with a clear structure. Here's what works and what to fix, most important first.
+
+## What works
+- **Clear hierarchy.** Hero, title, meta, Ingredients, Steps is the order people expect for a recipe.
+- **A consistent palette.** The warm yellow, orange and tomato red fit the food, and the teal section bars contrast well with them.
+- **Readable body text.** The ingredient and step text is dark on an off-white background, and the line spacing is comfortable.
+- **Numbered steps and bulleted ingredients.** The list types suit the content.
+
+## Problems to fix
+
+1. **The hero image is a placeholder.** Two circles don't show the dish, and a recipe screen sells itself with a photo of the food. Use a real photo, or an illustration that actually looks like shakshuka (a pan with eggs in sauce). If you can't get one, a simple pan-and-eggs drawing is better than abstract circles.
+
+2. **The back arrow and heart are hard to see.** The white "<" is small and sits on a bright yellow background, so it has very low contrast. The heart is a thin black outline that doesn't match it. Fixes:
+   - Make both icons the same style and size.
+   - Put each in a semi-transparent circular button (about 40 px) so they stay visible on any image.
+   - Make the touch targets at least 44×44 px. The current icons are too small to tap comfortably.
+
+3. **The meta row is too faint.** The "30 min · Medium · 2 servings · 4.8" text is small, light grey and sits close to the title. These are key facts for a cook. Darken the text, increase its size to about 14 px, and add more space above it. The icons are also inconsistent: some are emoji (🔥, 👥) and others are plain glyphs (⏱, ★). Pick one icon set.
+
+4. **The floating "+" button has no clear meaning.** Does it add to a shopping list, start cooking, or save the recipe? A bare "+" doesn't say. Use a label or a more specific icon, for example "Start cooking". It also overlaps the end of the content, so add bottom padding so the last step never hides behind it.
+
+5. **The section headers are heavy.** The full-width teal bars with white caps compete with the title. Try a lighter treatment, such as colored text with a thin underline, so the title stays the loudest element. Also check white-on-teal contrast. It looks borderline, and you can test it with a contrast checker (aim for 4.5:1).
+
+6. **The title is large and centered while everything else is left-aligned.** Mixing the two looks slightly off. Left-align the title to match the lists, or center more of the content. Also, "With Feta And Fresh Herbs" is over-capitalized. Use sentence case: "Spicy tomato shakshuka with feta and fresh herbs".
+
+7. **The ingredients list is cramped and unclear.** Several items are crammed onto one line ("1 tsp cumin, 1 tsp paprika, chili flakes", "1 onion, 2 garlic cloves"). Give each ingredient its own line, and put the quantity in bold or a separate column so people can scan it while cooking.
+
+8. **The steps are dense.** Add more space between steps, and consider bolding the key times ("10 minutes"). Making each step number a small circle would also help.
+
+## Smaller polish
+- The phone frame has a lot of empty space under the steps. That's fine, but the layout will need to scroll properly with longer content.
+- Use a single typeface family. The title looks like a different font from the body.
+- Keep the left margins identical: the section headers, bullets and steps are slightly misaligned.
+
+## Priority order
+1. Real image
+2. Visible, larger back and heart buttons
+3. Clearer meta row and FAB
+4. Lighter section headers
+5. One ingredient per line
+
+Fixing just the first three would noticeably improve the screen. If you'd like, I can mock up a revised version or explain how to check contrast.
+

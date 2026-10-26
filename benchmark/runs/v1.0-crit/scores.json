@@ -1,0 +1,97 @@
+{
+  "s04": {
+    "without": {
+      "prioritization": 2,
+      "accuracy": 4,
+      "teaching": 3,
+      "exercise": 1,
+      "tone": 4,
+      "actionability": 4
+    },
+    "with": {
+      "prioritization": 5,
+      "accuracy": 4,
+      "teaching": 5,
+      "exercise": 5,
+      "tone": 5,
+      "actionability": 5
+    },
+    "note": "A's observations are accurate but it gives a list of seven issues plus print notes, has no exercise, and mentions a QR code that isn't on the card; B picks the three issues that matter most, names the principle behind each, and sets a time-boxed greyscale exercise with a clear done check, but it points to overlay markers the student can't see and calls the bullet before EDITOR 'stray'."
+  },
+  "s05": {
+    "with": {
+      "prioritization": 5,
+      "accuracy": 4,
+      "teaching": 5,
+      "exercise": 5,
+      "tone": 5,
+      "actionability": 5
+    },
+    "without": {
+      "prioritization": 2,
+      "accuracy": 3,
+      "teaching": 2,
+      "exercise": 1,
+      "tone": 4,
+      "actionability": 4
+    },
+    "note": "A picks the three issues that matter most (the faint info row, the heavy teal bars and the mismatched top icons), names the principle behind each, and gives a 20-minute contrast exercise with a clear done check; B is accurate in places but lists eight problems plus polish, includes doubtful claims (the + button overlapping content, a different title font, misaligned margins, the placeholder hero as the top issue), seldom says why each issue matters, and has no exercise."
+  },
+  "s06": {
+    "with": {
+      "prioritization": 5,
+      "accuracy": 4,
+      "teaching": 4,
+      "exercise": 4,
+      "tone": 4,
+      "actionability": 4
+    },
+    "without": {
+      "prioritization": 2,
+      "accuracy": 4,
+      "teaching": 3,
+      "exercise": 1,
+      "tone": 4,
+      "actionability": 4
+    },
+    "note": "A keeps to the three issues that matter most (no visible work, a generic headline with no CTA, weak secondary contrast), names the principle behind each and adds a timed exercise, but it rates the student as mid-level after they said junior and ends with tool chatter about log files; B's points are mostly correct and practical, but it lists about 12 items, has no exercise, and calls the deliberate uneven grid a layout bug."
+  },
+  "s07": {
+    "without": {
+      "prioritization": 2,
+      "accuracy": 4,
+      "teaching": 3,
+      "exercise": 1,
+      "tone": 4,
+      "actionability": 4
+    },
+    "with": {
+      "prioritization": 4,
+      "accuracy": 3,
+      "teaching": 4,
+      "exercise": 5,
+      "tone": 4,
+      "actionability": 4
+    },
+    "note": "Response B is better focused, names the principles behind each issue and gives a solid timed contrast exercise, but it has factual errors: the gap above the sign-up line is about 24px, not 8px, and the white LOGIN button already stands out most. Response A is accurate and specific but reads as a long list of issues with no exercise."
+  },
+  "s08": {
+    "without": {
+      "prioritization": 2,
+      "accuracy": 5,
+      "teaching": 2,
+      "exercise": 1,
+      "tone": 3,
+      "actionability": 4
+    },
+    "with": {
+      "prioritization": 5,
+      "accuracy": 4,
+      "teaching": 5,
+      "exercise": 5,
+      "tone": 5,
+      "actionability": 5
+    },
+    "note": "A has the sharpest single catch (the breakdown adds to 100% although 70% is labelled indoor) but reads as a 17-point list with no named principles and no exercise, while B ranks three accurate issues, explains the principle behind each, praises specific things, and sets a timed thumbnail exercise with a clear done check, though it misses the data inconsistency."
+  }
+}

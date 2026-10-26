@@ -1,0 +1,123 @@
+You are a senior product designer scoring two AI responses blind. Look at design.png in this folder first. Use the 'Feedback Decoder' rubric below. Score each response 1-5 per criterion. Judge substance, not length. Reply with JSON only: {"A": {criterion: score}, "B": {...}, "note": "one sentence"}.
+
+RUBRIC:
+# Scoring rubric
+
+For human designers (and the optional blind AI judge). Score each response 1–5 per criterion without knowing which one used the skill. Hide the file names, or have someone else shuffle them into A/B.
+
+**Scale:** 1 = missing or wrong · 2 = weak · 3 = acceptable · 4 = good, a designer would use it with small edits · 5 = excellent, ready to use.
+
+## Feedback Decoder
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **specificity** | Changes are concrete and measurable (element + from → to values), not "make it bolder". |
+| **grounding** | Changes refer to elements actually visible in the design; no invented elements or values. |
+| **interpretation** | Plausible readings of vague phrases, ranked, honest about uncertainty; asks when it should. |
+| **conflicts_scope** | Spots contradictions between requests, with the brief or accessibility; flags out-of-scope requests and round limits. |
+| **client_reply** | Reply is in the client's language, warm and professional, could be sent with minimal edits; handles scope politely. |
+| **usability** | Scannable, right length, the designer knows what to do in under a minute. |
+
+## Desk Crit
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **prioritization** | Focuses on the 1–3 issues that matter most for this work; no laundry list. |
+| **accuracy** | Observations are correct and point to specific places in the work. |
+| **teaching** | Names the principle behind each issue and why it matters, calibrated to the stated level. |
+| **exercise** | One concrete, time-boxed exercise targeting the main weakness, with a clear "done" check. |
+| **tone** | Kind and honest: specific praise, no grade inflation, no harshness; in the student's language. |
+| **actionability** | The student knows exactly what to do next. |
+
+## How to run a human scoring session
+
+1. `python3 benchmark/run_benchmark.py run --suite feedback --all` (and `--suite crit`).
+2. `python3 benchmark/run_benchmark.py report --out <run dir>` and strip the "with/without" headers, or copy outputs into a form as A/B in random order.
+3. Ask 3+ designers to score independently. Average per criterion; report the spread, not just the mean.
+
+
+TASK GIVEN TO BOTH:
+Client feedback on this design (design.png in this folder).
+
+Brief: App de delivery: pantallas inicio y plato. Tono fresco y cercano. 3 rondas acordadas, esta es la ronda 1.
+
+Client message:
+> Está bien pero le falta vida. Que destaque más la comida y que sea más moderno. Ah, y ¿podemos añadir un programa de puntos?
+
+
+RESPONSE A:
+He rehecho las dos pantallas para la ronda 1. Las miré en el render y se leen bien. Solo tenía el PNG, así que están redibujadas en HTML, no editadas sobre la fuente original.
+
+**Archivos** (en `r1/`):
+- `design-r1.png`
+- `design-r1.html`, que es la fuente editable.
+
+**Cómo respondo a cada punto**
+- **"Le falta vida":** cambié el blanco y el gris por un fondo crema cálido con un coral vivo (#ff5a36) como color principal. Los botones, los precios extra y la categoría activa usan ese coral. Las formas son más redondeadas, con sombras suaves y una barra de navegación flotante oscura.
+- **"Que destaque más la comida":**
+  - En el plato, la pizza ocupa la mitad superior de la pantalla, grande y ligeramente girada, con sombra y un fondo cálido.
+  - En inicio, la pizza sale en el banner y en la lista de restaurantes.
+  - Las categorías llevan icono de comida en vez de recuadros vacíos.
+- **"Más moderno":** la tipografía de títulos es más gruesa. Las opciones del plato son tarjetas, y la ficha del plato es una hoja que sube sobre la imagen. Añadí etiquetas de "Vegetarian" y de puntos.
+- **Programa de puntos:**
+  - En inicio hay una tarjeta oscura con el saldo (340 pts), una barra de progreso hacia un postre gratis y la regla de ganancia (1 punto por €1).
+  - En el plato hay una etiqueta "+12 points" y el botón de pedir sigue igual.
+
+**Cosas a tener en cuenta**
+- **Ilustraciones provisionales:** las pizzas y los iconos son ilustraciones y emojis, no fotos reales. Para la versión final harían falta fotografías de comida.
+- **Puntos:** la mecánica (1 punto por €1, la recompensa del postre, 12 puntos por una pizza de 11.90) es una suposición mía. El cliente tiene que confirmarla.
+- **Alcance:** el programa de puntos es una funcionalidad nueva, no un retoque de estilo. Aquí solo hay la tarjeta y la etiqueta. Si quiere una pantalla de recompensas, canje o historial, convendría acordarlo antes y decidir si cuenta dentro de las 3 rondas.
+- **Textos:** dejé la interfaz en inglés, igual que el original.
+
+
+RESPONSE B:
+**TL;DR** — ronda 1 de 3
+1. Fotos reales de comida: héroe del plato, miniaturas y banner · 2. Color más vivo, iconos de categoría y jerarquía de tipografía más marcada · 3. Programa de puntos = petición nueva: mostrar solo un punto de entrada discreto y tratarlo como ampliación de alcance
+Respuesta: "¡Gracias! Esta ronda ponemos la comida en primer plano y damos un aire más actual. Los puntos son una funcionalidad nueva que no estaba en el briefing; te propongo un pequeño avance y lo valoramos aparte."
+
+## Decode: delivery-app
+
+| # | Cliente dijo | Significado probable (confianza) | Cambio |
+|---|---|---|---|
+| 1 | "le falta vida" | a) sin imágenes reales ni personalidad (60%) | Todo es placeholder: círculo naranja, 2 miniaturas beige lisas. Poner fotos reales (ver #2) |
+|   |  | b) paleta apagada y plana (25%) | Fondo beige del héroe y tarjetas de categoría en melocotón pálido → un acento cálido (~#FF6B35) con ≤10% de superficie |
+|   |  | c) falta de microdetalles y calidez en el tono "fresco y cercano" (15%) | Copy más cercano ("¿Qué te apetece hoy?" en vez de "Deliver to"); es una pregunta, ver P1 |
+| 2 | "que destaque más la comida" | a) las fotos no existen o son mínimas (65%) | Héroe del plato: círculo ~200px → foto a sangre ~340×240 con plato cenital; miniaturas ~70px → ~110px o tarjetas con foto grande; banner verde con plato recortado |
+|   |  | b) la comida compite con elementos de UI (25%) | Banner verde ~300×120 vacío → reducir o integrarlo con foto; categorías: iconos/fotos de comida en vez de cuadrados lisos |
+|   |  | c) descripción y precios con poco peso (10%) | Descripción gris ~13px → más contraste. Solo si la foto no basta |
+| 3 | "más moderno" | a) estilo plano y genérico (50%) | Tarjetas con radio ~20–24px, sombra suave, fotos con esquinas redondeadas, títulos más grandes (H1 ~28 → ~34px) |
+|   |  | b) paleta verde saturado + beige "de plantilla" (30%) | Verde #22C55E (~2.3:1 con texto blanco, no cumple 4.5:1) → verde más oscuro (~#15803D, ~5:1) o acento cálido; el verde ya dice "fresco", no hace falta quitarlo |
+|   |  | c) falta de movimiento/transiciones (20%) | Mostrar estados: héroe con parallax, chips seleccionables. Es entrega, no estático |
+| 4 | "¿podemos añadir un programa de puntos?" | a) funcionalidad nueva completa (70%) | Fuera del briefing (2 pantallas, inicio y plato). Mostrar solo un punto de entrada (chip "120 pts" en cabecera, marcador 5) y una línea en el plato ("Ganas 12 pts") |
+|   |  | b) solo quiere ver la idea reflejada en el diseño (30%) | Mismo chip + línea, sin pantallas nuevas |
+
+**Datos usados:** cabecera "Home" ~16px negrita · buscador ~40px alto, gris · categorías 5 tarjetas ~52px, melocotón pálido · banner verde #22C55E ~300×120, mitad vacío · miniaturas ~70px beige, sin foto · héroe del plato círculo naranja sobre beige ~340×240 · CTA verde 300×52 con texto blanco · tipografía sans (tipo Inter) · todos los valores son estimados (`~`).
+
+### Keep as is
+- A: título "Margherita" y jerarquía clara de la pantalla del plato: no tocarla al ampliar la foto (#1, #2).
+- B: barra CTA "Add to order" con precio: se queda abajo, ancho completo (cambiar solo el tono de verde si se oscurece, #3).
+- Base limpia y aireada (márgenes ~20px, lista de extras ordenada): no recargar al añadir fotos.
+
+### Conflictos
+- "Más vida" y "más moderno" pueden chocar con "fresco y cercano" si se vuelve frío o sobrecargado → priorizar fotos y color cálido, estética moderna por forma (radios, tipografía), no por efectos.
+- #4 (puntos) vs. "destaque la comida": un chip más en cabecera compite con el foco → mantenerlo pequeño y neutro.
+- Verde actual vs. accesibilidad: el texto blanco sobre #22C55E (~2.3:1) no llega a 4.5:1; hay que oscurecerlo aunque el cliente no lo haya pedido.
+
+### Preguntas al cliente (máx. 3)
+1. ¿Tenéis fotos de platos propias o usamos un banco de imágenes de referencia para la ronda?
+2. "Más moderno": ¿A) formas más redondeadas y tipografía grande, o B) color más atrevido (acento cálido junto al verde)? Puedo enseñar ambas variantes.
+3. Puntos: ¿lo vemos solo como idea visual en estas pantallas (chip + línea) o queréis diseñarlo completo (pantalla de puntos, canje, historial) como ampliación?
+
+### Respuesta (idioma del cliente)
+**Amable:** ¡Gracias por el feedback! Para esta ronda vamos a poner la comida en el centro: fotos reales en el plato, las miniaturas y el banner, con un toque de color y formas más actuales para que tenga más vida sin perder el tono fresco y cercano. Lo del programa de puntos nos encanta como idea. Como no estaba en el briefing inicial (inicio y plato), te propongo incluir solo un pequeño detalle visual como avance y, si quieres desarrollarlo entero (pantalla de puntos, canje…), lo presupuestamos aparte. ¿Tenéis fotos de platos o usamos referencias?
+
+**Firme:** Gracias. En esta ronda trabajamos las fotos, el color y el estilo más actual de las dos pantallas acordadas. El programa de puntos es una funcionalidad nueva que queda fuera del alcance inicial; podemos incluir un indicador visual como muestra, y su diseño completo lo tratamos como ampliación con su propia estimación.
+
+### Alcance
+Ronda 1 de 3 · 3 peticiones dentro de alcance (#1–#3), 1 nueva (#4 programa de puntos, no está en el briefing) → mensaje de ampliación incluido en las respuestas. El ledger no registra importes ni nombres.
+
+Overlay: `./benchmark/runs/v1.0-feedback/f11/with/.feedback-decoder/work/overlay.png`
+Ledger: `./benchmark/runs/v1.0-feedback/f11/with/.feedback-decoder/delivery-app.md`
+
+Nota: el overlay muestra el marcador 5 sobre un espacio vacío de la cabecera, que es donde propongo el chip de puntos. Esta carpeta no es un repo git, así que no he tocado ningún `.gitignore`.
+

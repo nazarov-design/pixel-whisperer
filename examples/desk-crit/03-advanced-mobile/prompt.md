@@ -1,0 +1,1 @@
+Can I get a crit on this onboarding flow? onboarding.png in this folder, three screens for a personal finance app. I'm a product designer with ~5 years of experience, preparing this for my portfolio. Be tough.

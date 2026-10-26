@@ -1,0 +1,18 @@
+# Per-user data written by the skills: never commit
+.feedback-decoder/
+.desk-crit/
+
+# Build output (attached to GitHub Releases instead)
+dist/
+
+# Local tooling
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.claude/
+
+# Benchmark scratch folders (outputs .md are kept)
+benchmark/runs/*/*/with/
+benchmark/runs/*/*/without/
+benchmark/runs/*/*/judge/

@@ -1,0 +1,102 @@
+You are a senior product designer scoring two AI responses blind. Look at design.png in this folder first. Use the 'Desk Crit' rubric below. Score each response 1-5 per criterion. Judge substance, not length. Reply with JSON only: {"A": {criterion: score}, "B": {...}, "note": "one sentence"}.
+
+RUBRIC:
+# Scoring rubric
+
+For human designers (and the optional blind AI judge). Score each response 1–5 per criterion without knowing which one used the skill. Hide the file names, or have someone else shuffle them into A/B.
+
+**Scale:** 1 = missing or wrong · 2 = weak · 3 = acceptable · 4 = good, a designer would use it with small edits · 5 = excellent, ready to use.
+
+## Feedback Decoder
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **specificity** | Changes are concrete and measurable (element + from → to values), not "make it bolder". |
+| **grounding** | Changes refer to elements actually visible in the design; no invented elements or values. |
+| **interpretation** | Plausible readings of vague phrases, ranked, honest about uncertainty; asks when it should. |
+| **conflicts_scope** | Spots contradictions between requests, with the brief or accessibility; flags out-of-scope requests and round limits. |
+| **client_reply** | Reply is in the client's language, warm and professional, could be sent with minimal edits; handles scope politely. |
+| **usability** | Scannable, right length, the designer knows what to do in under a minute. |
+
+## Desk Crit
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **prioritization** | Focuses on the 1–3 issues that matter most for this work; no laundry list. |
+| **accuracy** | Observations are correct and point to specific places in the work. |
+| **teaching** | Names the principle behind each issue and why it matters, calibrated to the stated level. |
+| **exercise** | One concrete, time-boxed exercise targeting the main weakness, with a clear "done" check. |
+| **tone** | Kind and honest: specific praise, no grade inflation, no harshness; in the student's language. |
+| **actionability** | The student knows exactly what to do next. |
+
+## How to run a human scoring session
+
+1. `python3 benchmark/run_benchmark.py run --suite feedback --all` (and `--suite crit`).
+2. `python3 benchmark/run_benchmark.py report --out <run dir>` and strip the "with/without" headers, or copy outputs into a form as A/B in random order.
+3. Ask 3+ designers to score independently. Average per criterion; report the spread, not just the mean.
+
+
+TASK GIVEN TO BOTH:
+I designed a login screen with glassmorphism for practice. Feedback?
+
+(The work is design.png in this folder.)
+
+
+RESPONSE A:
+The gradient and the frosted card look good, but contrast is the main problem, and it hurts usability.
+
+**What works**
+- The coral-to-lavender gradient is soft and suits the glass effect.
+- The card proportions, rounded corners and thin light border are well judged.
+- The spacing and vertical rhythm are consistent, and the layout is simple and centered.
+- The solid white LOGIN button is the clear primary action.
+
+**Main problems**
+1. **White text on a pale, translucent card.** This is the biggest issue.
+   - The title, subtitle, "Remember me", "Forgot password?", "or continue with" and "Sign up" are white on a light pink-white surface. Contrast is probably around 1.2–1.5:1, against the 4.5:1 WCAG asks for body text.
+   - The small text (about 11–12px) is nearly unreadable.
+   - Fix: darken the text to a deep plum or charcoal, or make the card more opaque or tinted darker. If you want to keep white text, the glass needs to be darker, for example `rgba(60,30,80,0.25)` with a stronger blur.
+2. **The social buttons nearly disappear.** Their white labels on a faint white fill have almost no contrast, and they don't look clickable. Give them a visible border or a stronger fill, a darker label, and ideally their logos.
+3. **The LOGIN label is low contrast too.** Light purple on white is about 2.5:1. Use a darker purple, or give the button a solid purple fill with white text.
+4. **Placeholders are weak and there are no labels.** The grey placeholders on a near-white field are faint. Placeholders also vanish once the user types, so add visible labels or floating labels.
+
+**Smaller polish**
+- The "Remember me" checkbox is tiny, and its hit area looks too small.
+- "Forgot password?" and "Sign up" don't look like links. Add an underline or an accent color, and make "Sign up" stand out from the plain text around it.
+- The type hierarchy is flat. The title is bold and big, but everything else sits at one small size. Raise the secondary text to at least 13–14px.
+- The inputs have no visible edge. A 1px light border would help, along with a clear focus state (not visible here, so make sure you design one).
+- The "— or continue with —" dashes are a bit dated. A hairline divider with centered text would look cleaner.
+- Add a subtle shadow under the card. Glassmorphism needs something behind the card to blur, and the background is a plain gradient, so the effect barely reads. A few colored blobs or shapes behind the card would show off the frosted blur.
+- The card has a lot of empty space around it. That's fine for a login, but the card could be slightly larger, or you could add a logo or icon at the top.
+
+If you only change one thing, fix the text contrast. That one change would make this design a lot stronger.
+
+
+RESPONSE B:
+**TL;DR** — Main issue: white text sits on a pale frosted card, so the title, links and social buttons are hard to read. Exercise: Contrast pass, 30 min. Fix the contrast on this one screen and check each text/background pair against a ratio target.
+
+## Desk crit: Glassmorphism login · beginner–intermediate (inferred, since you didn't say. Tell me if that's off.)
+
+### What works
+- **The gradient background** (outside the card): the coral-to-lavender sweep is soft and gives the glass something to blur against. The mood fits the style.
+- **The card frame** (marker A): the rounded corners, the thin light border and the generous outer margin look like real glassmorphism. The card is clearly centered and isolated.
+- **The input fields** (marker A): they are the most legible elements on the screen. They're consistent in size and radius, evenly spaced, and aligned to one left and right edge.
+
+### Fix first
+**1. White text on a light surface** (marker 1) · *Principle: contrast*
+What I see → "Welcome Back!", the subtitle, "Remember me", "Forgot password?" and the footer are all white on a pink card that is nearly white. The subtitle and small links are around 11–12px, so they almost vanish. Glass only works when the backdrop behind the text is dark or saturated enough. Here the card sits on the lightest part of the gradient. The card needs a tint, or the text needs to go dark. Try dark text (a deep plum) at about 4.5:1 contrast for body text. Or darken the card fill and the gradient behind it. Also raise the small text to 13–14px.
+
+**2. The actions have no ranking** (marker 2) · *Principle: hierarchy*
+What I see → The LOGIN button is white on a near-white card, with lavender text. It is only slightly more visible than the inputs. The Google/Apple/Facebook buttons are nearly invisible, with white labels on a faint white fill. This is the one action the screen exists for, and it doesn't stand out. Give LOGIN a solid, saturated fill, such as the deep purple from the gradient's corner, with white text. Give the social buttons a visible outline and dark text so they read as secondary.
+
+**3. The bottom of the card is cramped** (marker 3) · *Principle: rhythm/spacing*
+What I see → "Don't have an account? Sign up" sits about 12px under the social buttons and about 25px above the card edge. The title and subtitle are also tight to each other. The middle of the card is more open than its ends. Add more space above the footer and keep the vertical gaps on a consistent scale (for example 8/16/24/32). This is a later fix, and it's easier once 1 and 2 are done.
+
+### Exercise (30 min): Contrast pass
+Duplicate the screen. Pick a contrast checker and test every text/background pair. Note the ratio for each. Change fills and colors until body text hits 4.5:1 and the button label hits at least 4.5:1. Don't touch the layout. Done when: every text element passes, and in a squint test (blur your eyes, or blur the screenshot) you can still find LOGIN first.
+
+### Study
+Look at well-made glassmorphism UIs (OS control panels, music-player cards) and notice how the glass is always paired with a darker tint or a darker backdrop. The text is rarely pure white on a light surface. Look at login screens from auth products and notice that there is one filled primary button, and that social options are outlined.
+
+Progress: contrast, 1st time · hierarchy, 1st time · Overlay: `.desk-crit/work/overlay.png`
+

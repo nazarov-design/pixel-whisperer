@@ -1,0 +1,22 @@
+[
+  {"id": "s01", "image": "s01-poster.png", "level": "beginner", "lang": "en",
+   "prompt": "I'm a beginner learning graphic design. Here's my first event poster for a rooftop jazz night. What should I improve?"},
+  {"id": "s02", "image": "s02-dashboard.png", "level": "intermediate", "lang": "en",
+   "prompt": "Portfolio piece: an overview dashboard for an online shop owner (revenue and recent orders matter most). Can I get a crit?"},
+  {"id": "s03", "image": "s03-onboarding.png", "level": "advanced", "lang": "en",
+   "prompt": "Crit please: 3 onboarding screens for a personal finance app. I have ~5 years of experience, so be tough."},
+  {"id": "s04", "image": "s04-business-card.png", "level": "beginner", "lang": "en",
+   "prompt": "I just started learning design. I made a business card (front and back) for a photographer friend. Is it good? What should I change?"},
+  {"id": "s05", "image": "s05-recipe-app.png", "level": "beginner", "lang": "en",
+   "prompt": "This is my UI course homework: a recipe detail screen. Please review it, I'm a beginner."},
+  {"id": "s06", "image": "s06-portfolio-home.png", "level": "intermediate", "lang": "ru",
+   "prompt": "Привет! Это главная моего портфолио, я джун продуктовый дизайнер. Что улучшить?"},
+  {"id": "s07", "image": "s07-login.png", "level": "beginner", "lang": "en",
+   "prompt": "I designed a login screen with glassmorphism for practice. Feedback?"},
+  {"id": "s08", "image": "s08-infographic.png", "level": "intermediate", "lang": "en",
+   "prompt": "Class assignment: an infographic about household water use, for a general audience. What would you improve?"},
+  {"id": "s09", "image": "s09-product-page.png", "level": "intermediate", "lang": "en",
+   "prompt": "I'm practicing e-commerce UI. Here's a product page for a jacket. Honest crit please."},
+  {"id": "s10", "image": "s10-newsletter.png", "level": "advanced", "lang": "en",
+   "prompt": "Senior-ish designer here. Email newsletter template for a reading community. What would you push on?"}
+]

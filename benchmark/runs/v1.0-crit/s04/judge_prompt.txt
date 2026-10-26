@@ -1,0 +1,128 @@
+You are a senior product designer scoring two AI responses blind. Look at design.png in this folder first. Use the 'Desk Crit' rubric below. Score each response 1-5 per criterion. Judge substance, not length. Reply with JSON only: {"A": {criterion: score}, "B": {...}, "note": "one sentence"}.
+
+RUBRIC:
+# Scoring rubric
+
+For human designers (and the optional blind AI judge). Score each response 1–5 per criterion without knowing which one used the skill. Hide the file names, or have someone else shuffle them into A/B.
+
+**Scale:** 1 = missing or wrong · 2 = weak · 3 = acceptable · 4 = good, a designer would use it with small edits · 5 = excellent, ready to use.
+
+## Feedback Decoder
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **specificity** | Changes are concrete and measurable (element + from → to values), not "make it bolder". |
+| **grounding** | Changes refer to elements actually visible in the design; no invented elements or values. |
+| **interpretation** | Plausible readings of vague phrases, ranked, honest about uncertainty; asks when it should. |
+| **conflicts_scope** | Spots contradictions between requests, with the brief or accessibility; flags out-of-scope requests and round limits. |
+| **client_reply** | Reply is in the client's language, warm and professional, could be sent with minimal edits; handles scope politely. |
+| **usability** | Scannable, right length, the designer knows what to do in under a minute. |
+
+## Desk Crit
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **prioritization** | Focuses on the 1–3 issues that matter most for this work; no laundry list. |
+| **accuracy** | Observations are correct and point to specific places in the work. |
+| **teaching** | Names the principle behind each issue and why it matters, calibrated to the stated level. |
+| **exercise** | One concrete, time-boxed exercise targeting the main weakness, with a clear "done" check. |
+| **tone** | Kind and honest: specific praise, no grade inflation, no harshness; in the student's language. |
+| **actionability** | The student knows exactly what to do next. |
+
+## How to run a human scoring session
+
+1. `python3 benchmark/run_benchmark.py run --suite feedback --all` (and `--suite crit`).
+2. `python3 benchmark/run_benchmark.py report --out <run dir>` and strip the "with/without" headers, or copy outputs into a form as A/B in random order.
+3. Ask 3+ designers to score independently. Average per criterion; report the spread, not just the mean.
+
+
+TASK GIVEN TO BOTH:
+I just started learning design. I made a business card (front and back) for a photographer friend. Is it good? What should I change?
+
+(The work is design.png in this folder.)
+
+
+RESPONSE A:
+It's a decent start. The layout is clean and the information is easy to find. A few things keep it from looking professional, and they matter more for a photographer, because the card is a sample of their taste.
+
+**What works**
+- The back has a clear order: name, then phone, email, web, address.
+- It has plenty of white space and isn't cluttered.
+- The front and back share one accent blue, so they read as a set.
+
+**What to change, most important first**
+
+1. **The front has no photography.** A photographer's card should show their work. Use one strong photo as the full-bleed front, or on one side of the back. The cyan-to-green gradient looks generic and a bit like a tech startup. It says nothing about this person's style.
+
+2. **The script font on the name is hard to read and looks dated.** It also clashes with the plain sans-serif used everywhere else. Pick one or two typefaces. A clean sans-serif or an elegant serif would be better, and the name should be the biggest element.
+
+3. **The white text on the bright gradient is low contrast.** The tagline especially gets weak on the light green side. If you use a photo, put a dark overlay behind the text or choose a calmer, darker background.
+
+4. **The tagline wraps badly.** "PHOTOGRAPHER • VIDEOGRAPHER • DRONE PILOT • EDITOR" breaks so that "EDITOR" sits alone on a second line. Shorten it, shrink it, or put each role on its own line. Four roles in all caps with bullets is also a lot. Two or three is stronger.
+
+5. **The back has several small-text problems.**
+   - The social handles and the quote at the bottom are tiny, and the light gray italic quote is nearly unreadable. Print is less forgiving than a screen, so keep body text at about 7–8 pt or larger.
+   - The emoji icons (📞 ✉ 🌐 📍) look amateurish, and they're inconsistent in size. The envelope is much smaller than the others. Use simple line icons in one style, or drop the icons and use plain text.
+   - The blue circle is an empty placeholder. Fill it with a logo or photo, or remove it.
+
+6. **The back is unbalanced.** All the content sits in the upper left, with a gap in the middle and small text crammed along the bottom. Align things to a clear grid and group them: contact details together, social links together. Make the margins even. The bottom text almost touches the edge.
+
+7. **The two sides don't feel related.** The front is loud and gradient-heavy, and the back is plain white. Carry something across, such as the same typeface, a color band, or the same photo treatment.
+
+**Before printing**
+- Add 3 mm bleed on all sides if the background color or image runs to the edge. Keep important text about 3–5 mm inside the trim.
+- Design at 300 dpi at the real card size (for example 85 × 55 mm or 3.5 × 2 in).
+- Replace the placeholder text (phone, email, address) and check the QR code or handles actually work.
+
+**A simple direction to try:** a full-bleed photo on the front with the name in a clean typeface and one short line of roles beneath it. The back is white or dark with the logo, three contact lines, and one social handle, all aligned to the same left edge.
+
+If you'd like, share the friend's work or brand colors and I can suggest a specific palette and font pairing.
+
+
+RESPONSE B:
+**TL;DR** — Main issue: the front's white text sits on a pale cyan-to-green gradient, so it's hard to read. Exercise: Greyscale version, 30 min. Convert both sides to greyscale and fix whatever disappears.
+
+## Desk crit: Photographer business card, front and back · beginner
+(You said you just started, so I judged this as a beginner piece. I assumed the level and didn't ask.)
+
+### What works
+- **The script name on the front** (marker A): it's the largest thing on the card and centred, so you read the name first and the job titles second. That order is right for a card.
+- **The back has a clear order** (marker A): bold blue studio name, then phone, email, web and address, each on its own line. Someone can find the phone number quickly.
+- **One cyan accent colour** carries across both sides, so they look like one set. The white back gives plenty of space for the information.
+
+### Fix first
+**1. The front is hard to read** (marker 1) · *Principle: contrast*
+- **What I see:** white text on a light gradient, especially toward the green corner. The tagline is thin and small. It also wraps, so "EDITOR" sits alone on a second line, and the line ends in a stray "•".
+- **Why it matters:** the front is the first thing people see, and it's the only place that says what your friend does. A printed card will look paler than it does on screen.
+- **Try this:**
+  - Darken the gradient so white text clearly stands out, or switch to dark text.
+  - Shorten the tagline, or put it on two planned lines, e.g. "PHOTOGRAPHER • VIDEOGRAPHER" / "DRONE PILOT • EDITOR".
+  - Drop the trailing bullet.
+
+**2. The back's small text is too small and too faint** (marker 2) · *Principle: typography / hierarchy*
+- **What I see:** the social handles are tiny light blue, and the quote is tiny light grey italic. On a real card (about 9 cm wide) this would be roughly 5 pt, which is unreadable. Between the contact block and the footer there's a large empty gap. The emoji icons also come from different styles and sizes.
+- **Why it matters:** the back exists to be read, and the footer is where people look for your friend's Instagram.
+- **Try this:**
+  - Set the smallest text to at least 7–8 pt equivalent, in a darker colour.
+  - Pick one icon style, or drop the icons and use plain labels.
+  - Either cut the quote or give it room.
+
+**3. The card never shows photography** (marker 3) · *Principle: composition*
+- **What I see:** a blank blue circle sits where a logo or photo should go, and the front is only a gradient.
+- **Why it matters:** a photographer's card is a portfolio piece. Right now it could belong to any business.
+- **Try this:**
+  - Use your friend's best photo as the full front, or on the back in place of the circle.
+  - Keep the name in a darkened or plain area so it stays readable.
+  - If it really is a logo placeholder, replace it with the real logo.
+
+Later: the gradient is a very common default look, so a more distinctive colour treatment would help. The script font and the plain sans-serif on the back don't feel related.
+
+### Exercise (30 min): Greyscale version
+- **Task:** turn both sides into greyscale (a screenshot with a greyscale filter is enough). Note every piece of text that fades or merges into its background. Fix each one and re-check in greyscale.
+- **Done when:** the name, the titles, the phone/email and the handles are all easy to read in greyscale, in the same order of importance as in colour.
+
+### Study
+Look at photographers' and studios' business cards, and at minimal card collections. Notice what sits behind the text (a plain area, a dark overlay, white space), how many lines of text there are, and how small the smallest text is compared with the name.
+
+Progress: first session, so there's no history yet. The journal is saved in `.desk-crit/` (contrast is flagged as the first recurring item). Overlay: `.desk-crit/work/overlay.png`
+

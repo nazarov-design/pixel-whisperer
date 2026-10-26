@@ -1,0 +1,3 @@
+This is my UI course homework: a recipe detail screen. Please review it, I'm a beginner.
+
+(The work is design.png in this folder.)

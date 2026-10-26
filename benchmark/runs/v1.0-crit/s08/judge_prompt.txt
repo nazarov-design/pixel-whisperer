@@ -1,0 +1,119 @@
+You are a senior product designer scoring two AI responses blind. Look at design.png in this folder first. Use the 'Desk Crit' rubric below. Score each response 1-5 per criterion. Judge substance, not length. Reply with JSON only: {"A": {criterion: score}, "B": {...}, "note": "one sentence"}.
+
+RUBRIC:
+# Scoring rubric
+
+For human designers (and the optional blind AI judge). Score each response 1–5 per criterion without knowing which one used the skill. Hide the file names, or have someone else shuffle them into A/B.
+
+**Scale:** 1 = missing or wrong · 2 = weak · 3 = acceptable · 4 = good, a designer would use it with small edits · 5 = excellent, ready to use.
+
+## Feedback Decoder
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **specificity** | Changes are concrete and measurable (element + from → to values), not "make it bolder". |
+| **grounding** | Changes refer to elements actually visible in the design; no invented elements or values. |
+| **interpretation** | Plausible readings of vague phrases, ranked, honest about uncertainty; asks when it should. |
+| **conflicts_scope** | Spots contradictions between requests, with the brief or accessibility; flags out-of-scope requests and round limits. |
+| **client_reply** | Reply is in the client's language, warm and professional, could be sent with minimal edits; handles scope politely. |
+| **usability** | Scannable, right length, the designer knows what to do in under a minute. |
+
+## Desk Crit
+
+| Criterion | What a 5 looks like |
+|---|---|
+| **prioritization** | Focuses on the 1–3 issues that matter most for this work; no laundry list. |
+| **accuracy** | Observations are correct and point to specific places in the work. |
+| **teaching** | Names the principle behind each issue and why it matters, calibrated to the stated level. |
+| **exercise** | One concrete, time-boxed exercise targeting the main weakness, with a clear "done" check. |
+| **tone** | Kind and honest: specific praise, no grade inflation, no harshness; in the student's language. |
+| **actionability** | The student knows exactly what to do next. |
+
+## How to run a human scoring session
+
+1. `python3 benchmark/run_benchmark.py run --suite feedback --all` (and `--suite crit`).
+2. `python3 benchmark/run_benchmark.py report --out <run dir>` and strip the "with/without" headers, or copy outputs into a form as A/B in random order.
+3. Ask 3+ designers to score independently. Average per criterion; report the spread, not just the mean.
+
+
+TASK GIVEN TO BOTH:
+Class assignment: an infographic about household water use, for a general audience. What would you improve?
+
+(The work is design.png in this folder.)
+
+
+RESPONSE A:
+Your infographic has a clear structure: headline, key numbers, breakdown, then tips. Here is what I'd improve, most important first.
+
+**1. Fix the layout and empty space**
+- The bottom third of the canvas is empty. The content stops at about y=680 on a 1000px canvas. Crop the canvas, or scale the content up to fill it. Right now the piece looks unfinished.
+- The title wraps and leaves "GO?" alone on the second line. Shorten it, reduce the size, or break it on purpose ("Where does / our water go?").
+
+**2. Fix the data and its logic**
+- The bar chart's 70% "used indoors" stat doesn't connect to the breakdown. Toilet, shower, faucet, washing machine, leaks and "other" add up to 100%, so where's the outdoor 30%? Either label the chart "indoor use" and make it add up to 70%, or add garden and outdoor use. As it stands, a careful reader will see a contradiction.
+- "Leaks 12%" next to "1 in 3 homes have a leak" is confusing. One is a share of volume and the other is a share of homes. Say so explicitly, and link the two ideas.
+- "Other 8%" is drawn as an empty outline bar. It looks like missing data. Fill it with a neutral grey instead.
+- Add a source or a real basis for the figures. The footnote says "Illustrative numbers", which is honest, but it is very small and low in contrast. Keep it, but make it legible.
+
+**3. Improve readability and contrast**
+- The footnote is pale blue on pale blue and nearly unreadable. Darken it and enlarge it.
+- The big stats (300 L, 70%, 1 in 3) are in a light teal on a light background. Contrast is weak. Use the dark blue from the title.
+- The tip text and the bar labels are small (about 12px). For a general audience, aim for 14–16px minimum.
+- The bar colors fade from dark to light by rank. That suggests the lighter bars matter less, and it makes the lowest ones faint. The ranking is already shown by bar length, so one solid color would be cleaner. You could highlight just the biggest bar, or the leaks bar, since leaks are your "fixable" story.
+
+**4. Improve the hierarchy and storytelling**
+- The three big stats get the same weight, but they aren't equally important. Choose one hero number and make the others secondary.
+- Add a takeaway to the chart. For example, "Toilets and showers use 44% of the total", and give the chart its own heading and units.
+- Tie the tips to the data. Leaks have a tip, and the shower and the washing machine do too, but the toilet (the largest category) has none. Put each tip near the bar it relates to, or number them in the same order.
+- Quantify the tips consistently. "Up to 20 litres" and "20 litres a day" are specific, but the washing-machine tip has no number. Add one.
+
+**5. Polish the visual style**
+- The emoji icons are a different visual style from the rest of the piece and render differently on every platform. Replace them with a single consistent set of flat icons in the palette.
+- Everything is the same pale blue. White cards on a pale background have very little separation. Add a stronger accent color or a darker band so the sections stand apart.
+- Align the content edges. The chart's bars stop at 24% and leave a large empty area on the right, while the cards span the full width. Scaling the bars to the available width would balance it.
+
+**If you only have time for three fixes:** (1) resolve the 70% / 100% inconsistency, (2) darken the light text, and (3) use the empty space at the bottom.
+
+I can make a revised version if you'd like.
+
+
+RESPONSE B:
+**TL;DR**: The main issue is composition. All the content sits in the top two thirds and the bottom 300px is empty. Exercise: Thumbnails first (30 min). Sketch 6 layouts that fill the whole canvas, then rebuild from your favourite.
+
+## Desk crit: Where does our water go? · beginner (inferred from the work, so tell me if that's wrong)
+
+### What works
+- **The bar chart** (marker A). It is sorted from largest to smallest, each bar is labelled directly, and the percentage sits at the bar's end. No legend is needed, and it reads in about three seconds.
+- **The three big numbers** (marker B). 300 L, 70% and 1 in 3 are large and bold, with a small caption under each. They give a general audience a fast way in before the detail.
+- **One blue palette.** The colour matches the topic, and the dark-blue text on the pale background stays readable for the main content.
+
+### Fix first
+**1. The layout stops at about 66% of the page** (marker 1) · *Principle: composition*
+- **What I see:** everything is packed into the top 680px and the bottom 300px is blank. The bars also end at x≈440, so the right side of that block is empty while the stats row above spans the full width.
+- **Why it matters:** the page looks unfinished, as if the content ran out. It also forces the chart, your main content, to stay small.
+- **Try this:** let the chart grow to fill the width, with bars running to about x=600. Or give the three tips more space and make them a proper closing section. Either way, decide the page's height first and then divide it up.
+
+**2. The story is hidden in the colour fade** (marker 2) · *Principle: hierarchy*
+- **What I see:** the bars fade from dark to pale. "Leaks" at 12% is very light, and "Other" at 8% is almost invisible.
+- **Why it matters:** your own stat says 1 in 3 homes has a leak, and the tips tell people to fix leaks. So leaks is the message, yet it is the faintest thing on the page. The fade only repeats what the bar length already shows.
+- **Try this:** make all bars one calm mid-blue and give "Leaks" a single accent colour (orange or red). Then the stat, the bar and the tip all point at the same thing.
+
+**3. The small text is too small and too faint** (marker 3) · *Principle: typography and contrast*
+- **What I see:** the tip text is about 11–12px, and the footnote "Illustrative numbers…" is pale blue on pale blue. In the title, "GO?" sits alone on the second line.
+- **Why it matters:** the tips are the call to action, but they are the hardest thing to read. A general audience will skip them.
+- **Try this:**
+  - Raise the tips to at least 16px and make the icons smaller than the text block.
+  - Darken the footnote.
+  - Shorten or resize the title so it breaks as "Where does / our water go?", or fits on one line.
+
+Later: the stats row and the bar labels use different left edges (centred columns versus a left-aligned list). Pick one axis.
+
+### Exercise (30 min): Thumbnails first
+Sketch 6 small layouts (5×7 cm) of this same infographic on paper in 15 minutes. In each one, the content must fill the full height. Try one with the chart on the left and tips on the right, one with the tips as a bottom band, and so on. Pick one and rebuild it.
+**Done when:** your chosen sketch has no empty band larger than your margin, and you can say why it beats the other five.
+
+### Study
+Look at public-health or utility-company infographics and long-form data-journalism graphics. Notice how the single most important number or bar gets its own colour, and how the layout decides the height of each section before any decoration.
+
+Overlay: `.desk-crit/work/overlay.png`. Journal: I couldn't save it, because writing `.desk-crit/student.md` was blocked by a permission prompt. If you want session tracking, approve that write and I'll save it.
+

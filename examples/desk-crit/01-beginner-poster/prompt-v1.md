@@ -1,0 +1,1 @@
+Hi! I'm learning graphic design (beginner, doing an online course). This is my first event poster, poster-v1.png in this folder. The task was: "an A3 poster for a rooftop jazz night, must show name, date, lineup and where to buy tickets". What should I improve?

@@ -1,0 +1,6 @@
+[{"n":"1","x":64,"y":195,"w":372,"h":150,"label":"Bigger, bolder H1"},
+{"n":"2","x":64,"y":461,"w":136,"h":40,"label":"Accent CTA, 4.5:1+"},
+{"n":"3","x":536,"y":206,"w":400,"h":280,"label":"Real product screenshot"},
+{"n":"4","type":"gap","x":500,"y":512,"h":228,"label":"Air between sections"},
+{"n":"5","kind":"scope","x":715,"y":24,"w":66,"h":24,"label":"Pricing page"},
+{"n":"A","x":64,"y":819,"w":872,"h":197,"label":"Feature cards: keep"}]

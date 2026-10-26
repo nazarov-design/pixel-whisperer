@@ -1,0 +1,14 @@
+{
+  "name": "pixel-whisperer",
+  "description": "Design skills by Vladislav Nazarov: decode client feedback and get desk crits.",
+  "owner": { "name": "Vladislav Nazarov", "url": "https://github.com/nazarov-design" },
+  "plugins": [
+    {
+      "name": "pixel-whisperer",
+      "source": "./",
+      "description": "feedback-decoder + desk-crit: client feedback → concrete design changes; studio-style crits with a progress journal.",
+      "category": "design",
+      "tags": ["design", "ux", "feedback", "critique", "education"]
+    }
+  ]
+}

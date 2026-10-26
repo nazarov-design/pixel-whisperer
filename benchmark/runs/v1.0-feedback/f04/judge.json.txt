@@ -1,0 +1,3 @@
+```json
+{"A": {"specificity": 3, "grounding": 4, "interpretation": 2, "conflicts_scope": 2, "client_reply": 1, "usability": 4}, "B": {"specificity": 5, "grounding": 4, "interpretation": 5, "conflicts_scope": 5, "client_reply": 5, "usability": 4}, "note": "A skipped the decoding and built a sensible redesign with no ranked readings, no 'calmer vs. add teachers' conflict and no client reply; B decodes each phrase with confidence levels, measurable changes, contrast checks and ready-to-send replies, though it gives the H1 as both ~46px and ~56px and places Teachers out of nav order."}
+```

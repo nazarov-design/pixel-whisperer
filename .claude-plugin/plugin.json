@@ -1,0 +1,10 @@
+{
+  "name": "pixel-whisperer",
+  "version": "1.0.0",
+  "description": "Two design skills: feedback-decoder turns vague client feedback into concrete design changes and a reply; desk-crit is a studio-style design mentor that tracks a learner's progress.",
+  "author": { "name": "Vladislav Nazarov", "url": "https://github.com/nazarov-design" },
+  "homepage": "https://github.com/nazarov-design/pixel-whisperer",
+  "repository": "https://github.com/nazarov-design/pixel-whisperer",
+  "license": "MIT",
+  "keywords": ["design", "ux", "ui", "feedback", "critique", "freelance", "design-education", "figma"]
+}

@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="render-size" content="1000x720">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{width:1000px;height:720px;background:#F4F6FA;font-family:Inter,Helvetica,Arial,sans-serif;color:#1F2937;display:flex}
+.side{width:190px;background:#1E293B;color:#CBD5E1;padding:22px 18px;font-size:13px}.side b{color:#fff;font-size:16px;display:block;margin-bottom:26px}.side div{padding:9px 10px;border-radius:6px;margin-bottom:2px}.side .on{background:#334155;color:#fff}
+main{flex:1;padding:22px 26px}.head{display:flex;justify-content:space-between;align-items:center}.head h1{font-size:22px}.head span{font-size:12px;color:#6B7280;border:1px solid #D1D5DB;padding:6px 10px;border-radius:6px;background:#fff}
+.kpis{display:flex;gap:14px;margin-top:18px}.k{background:#fff;border-radius:10px;padding:14px 16px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.k small{font-size:11px;color:#6B7280;text-transform:uppercase;letter-spacing:.5px}.k div{font-size:26px;font-weight:700;margin-top:6px}.k i{font-style:normal;font-size:11px;margin-left:6px}
+.row{display:flex;gap:18px;margin-top:20px}.panel{background:#fff;border-radius:10px;padding:16px;box-shadow:0 1px 2px rgba(0,0,0,.06)}.panel h3{font-size:14px;margin-bottom:14px}
+.bars{display:flex;align-items:flex-end;gap:12px;height:180px;padding:0 6px;border-bottom:1px solid #E5E7EB}.bars div{flex:1;border-radius:4px 4px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:10px;color:#6B7280;margin-top:10px}.legend span:before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;background:var(--c)}
+.donut{width:150px;height:150px;border-radius:50%;margin:8px auto;background:conic-gradient(#6366F1 0 38%,#F59E0B 38% 61%,#10B981 61% 80%,#EF4444 80% 92%,#8B5CF6 92%);position:relative}.donut:after{content:"";position:absolute;inset:34px;background:#fff;border-radius:50%}
+table{width:100%;border-collapse:collapse;font-size:12px}td,th{padding:8px 6px;text-align:left}th{font-size:11px;color:#9CA3AF;font-weight:500}tr:nth-child(even) td{background:#F9FAFB}
+.tag{padding:2px 8px;border-radius:10px;font-size:10px}
+</style></head><body>
+<div class="side"><b>◆ Shoply</b><div class="on">Overview</div><div>Orders</div><div>Products</div><div>Customers</div><div>Marketing</div><div>Settings</div></div>
+<main><div class="head"><h1>Overview</h1><span>Last 30 days ▾</span></div>
+<div class="kpis"><div class="k" style="width:190px"><small>Revenue</small><div>$48,210<i style="color:#10B981">▲ 12%</i></div></div>
+<div class="k" style="width:160px;margin-top:6px"><small>Orders</small><div>1,284<i style="color:#10B981">▲ 4%</i></div></div>
+<div class="k" style="width:210px"><small>Avg. order value</small><div style="color:#6366F1">$37.55<i style="color:#EF4444">▼ 2%</i></div></div>
+<div class="k" style="width:150px;padding:18px"><small>Refunds</small><div style="font-size:22px">23</div></div></div>
+<div class="row"><div class="panel" style="width:470px"><h3>Revenue by channel</h3><div class="bars">
+<div style="height:60%;background:#6366F1"></div><div style="height:75%;background:#F59E0B"></div><div style="height:45%;background:#10B981"></div><div style="height:90%;background:#EF4444"></div><div style="height:55%;background:#8B5CF6"></div><div style="height:70%;background:#EC4899"></div><div style="height:35%;background:#14B8A6"></div></div>
+<div class="legend"><span style="--c:#6366F1">Web</span><span style="--c:#F59E0B">iOS</span><span style="--c:#10B981">Android</span><span style="--c:#EF4444">Marketplace</span><span style="--c:#8B5CF6">Social</span><span style="--c:#EC4899">Email</span><span style="--c:#14B8A6">Other</span></div></div>
+<div class="panel" style="width:280px;margin-top:12px"><h3 style="text-align:center">Top categories</h3><div class="donut"></div><div class="legend" style="justify-content:center"><span style="--c:#6366F1">Shoes</span><span style="--c:#F59E0B">Bags</span><span style="--c:#10B981">Hats</span><span style="--c:#EF4444">Belts</span><span style="--c:#8B5CF6">Other</span></div></div></div>
+<div class="panel" style="margin-top:16px;width:760px"><h3>Recent orders</h3><table><tr><th>Order</th><th>Customer</th><th>Date</th><th>Status</th><th style="text-align:right">Total</th></tr>
+<tr><td>#10482</td><td>Customer A</td><td>12 May</td><td><span class="tag" style="background:#D1FAE5;color:#065F46">Paid</span></td><td style="text-align:right">$84.00</td></tr>
+<tr><td>#10481</td><td>Customer B</td><td>12 May</td><td><span class="tag" style="background:#FEF3C7;color:#92400E">Pending</span></td><td>$29.50</td></tr>
+<tr><td>#10480</td><td>Customer C</td><td>11 May</td><td><span class="tag" style="background:#FEE2E2;color:#991B1B">Refunded</span></td><td style="text-align:center">$112.90</td></tr></table></div>
+</main></body></html>
