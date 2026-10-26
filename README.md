@@ -106,6 +106,8 @@ Build the claude.ai zips with `tools/build_dist.sh`. Re-run the examples with `t
 
 Built by **Vladislav Nazarov**, product designer. [github.com/nazarov-design](https://github.com/nazarov-design)
 
+Portfolio: [vladislav-nazarov.vercel.app](https://vladislav-nazarov.vercel.app)
+
 Feedback, phrase suggestions for the phrasebook and new exercises are welcome as issues or PRs.
 
 MIT License.
